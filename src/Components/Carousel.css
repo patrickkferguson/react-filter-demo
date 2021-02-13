@@ -1,0 +1,8 @@
+.Carousel {
+  width: auto;
+  overflow: scroll;
+}
+
+.Carousel .cardContainer {
+  width: 2000px;
+}
