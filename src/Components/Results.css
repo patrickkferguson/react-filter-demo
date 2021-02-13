@@ -1,0 +1,14 @@
+.Results {
+  background-color: #ffffff;
+  padding: 15px;
+  padding-top: 5px;
+  margin-top: 15px;
+}
+
+.Results .sectionHeading {
+  color: #2f516d;
+  font-weight: bold;
+  font-size: 14px;
+  margin-top: 15px;
+  clear: left;
+}
