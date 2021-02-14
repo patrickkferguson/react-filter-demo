@@ -3,9 +3,9 @@ import './CardList.css';
 
 function CardList(props) {
 
-  const { data } = props;
+  const { data, imageStyle } = props;
 
-  const cards = data.map((cardData, _) => <Card data={cardData} />);
+  const cards = data.map((cardData, _) => <Card key={cardData.title} data={cardData} imageStyle={imageStyle} />);
 
   return (
     <div className="CardList">

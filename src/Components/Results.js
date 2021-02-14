@@ -10,7 +10,7 @@ function Results(props) {
       <div className="sectionHeading">Popular around you</div>
       <Carousel data={props.popular} />
       <div className="sectionHeading">Featured</div>
-      <CardList data={props.featured} />
+      <CardList data={props.featured} imageStyle="square" />
     </div>
   );
 }
