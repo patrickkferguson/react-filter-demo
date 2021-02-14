@@ -7,6 +7,8 @@ function Carousel(props) {
       <div className="cardContainer">
         <CardList data={props.data} imageStyle="landscape" />
       </div>
+      <button className="scrollLeft">&lt;</button>
+      <button className="scrollRight">&gt;</button>
     </div>
   );
 }

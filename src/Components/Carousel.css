@@ -1,8 +1,41 @@
 .Carousel {
   width: auto;
-  overflow: scroll;
+  overflow: hidden;
+  position: relative;
+  height: 200px;
 }
 
 .Carousel .cardContainer {
   width: 2000px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.Carousel .scrollLeft {
+  border-width: 0px;
+  background: linear-gradient(to left, rgba(255, 255, 255, 20%), rgba(255, 255, 255, 100%));
+  font-weight: bold;  
+  font-size: 24px;
+  color: #444444;
+  text-align: center;
+  width: 40px;
+  height: 182px;
+  position: absolute;
+  top: 10px;
+  left: 0px;
+}
+
+.Carousel .scrollRight {
+  border-width: 0px;
+  background: linear-gradient(to right, rgba(255, 255, 255, 20%), rgba(255, 255, 255, 100%));
+  font-weight: bold;  
+  font-size: 24px;
+  color: #444444;
+  text-align: center;
+  width: 40px;
+  height: 182px;
+  position: absolute;
+  top: 10px;
+  right: 0px;
 }
