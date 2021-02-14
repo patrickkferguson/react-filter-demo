@@ -1,43 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Search from './Components/Search';
-import Results from './Components/Results'
+import Results from './Components/Results';
 
-class App extends React.Component {
+const apiBaseUrl = 'http://demo3136867.mockable.io/';
 
-  render () {
+function App() {
 
-    const results = {
-      data: [
-        {
-          title: "Uluru-Kata Tjuta National Park",
-          img: "https://picsum.photos/800/2700",
-          location: "Uluru NT"
-        },
-        {
-          title: "Royal National Park",
-          img: "https://picsum.photos/400/400",
-          location: "Royal National Park NSW"
-        },
-        {
-          title: "Kosciuszko National Park",
-          img: "https://picsum.photos/320/720",
-          location: "NSW"
-        },
-        {
-          title: "Booderee National Park",
-          img: "https://picsum.photos/160/180",
-          location: "Jervis Bay JBT"
-        }   
-      ]
-    };
+  const [popularAttractions, setPopularAttractions] = useState([]);
+  const [featuredAttractions, setFeaturedAttractions] = useState([]);
 
-    return (
-      <div className="App">
-        <Search />
-        <Results popular={results.data} featured={results.data} />
-      </div>
-    );
+  async function fetchPopularAttractions() {
+    const response = await fetch(apiBaseUrl + 'carousel');
+    const json = await response.json();
+    setPopularAttractions(json.data);
   }
+
+  async function fetchFeaturedAttractions() {
+    const response = await fetch(apiBaseUrl + 'featured');
+    const json = await response.json();
+    setFeaturedAttractions(json.data);
+  }
+
+  useEffect(() => {
+    fetchPopularAttractions();
+    fetchFeaturedAttractions();
+  }, []);
+
+  return (
+    <div className="App">
+      <Search />
+      <Results popular={popularAttractions} featured={featuredAttractions} />
+    </div>
+  );
 }
 
 export default App;
