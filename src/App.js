@@ -8,11 +8,14 @@ function App() {
 
   const [popularAttractions, setPopularAttractions] = useState([]);
   const [featuredAttractions, setFeaturedAttractions] = useState([]);
+  const [filterText, setFilterText] = useState('');
+  const [filteredAttractions, setFilteredAttractions] = useState([]);
 
   async function fetchPopularAttractions() {
     const response = await fetch(apiBaseUrl + 'carousel');
     const json = await response.json();
     setPopularAttractions(json.data);
+    filterPopularAttractions(json.data);
   }
 
   async function fetchFeaturedAttractions() {
@@ -21,15 +24,31 @@ function App() {
     setFeaturedAttractions(json.data);
   }
 
+  function filterPopularAttractions(attractions) {    
+    if (filterText && filterText !== '' && attractions.length > 0) {
+      const filteredAttractions = attractions.filter(item => item.title.toLowerCase().includes(filterText.toLowerCase()));
+      setFilteredAttractions(filteredAttractions);
+    } else {
+      setFilteredAttractions(attractions);
+    }
+  }
+
   useEffect(() => {
-    fetchPopularAttractions();
-    fetchFeaturedAttractions();
-  }, []);
+    if (popularAttractions.length === 0) {
+      fetchPopularAttractions();
+    }
+
+    if (featuredAttractions.length === 0) {
+      fetchFeaturedAttractions();
+    }
+
+    filterPopularAttractions(popularAttractions);
+  }, [filterText]);
 
   return (
     <div className="App">
-      <Search />
-      <Results popular={popularAttractions} featured={featuredAttractions} />
+      <Search onChange={event => setFilterText(event.target.value)}/>
+      <Results popular={filteredAttractions} featured={featuredAttractions} />
     </div>
   );
 }
