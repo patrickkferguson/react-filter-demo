@@ -1,17 +1,39 @@
 .Card {
   border: 1px solid #e1e1e1;
   margin-top: 10px;
-  margin-right: 10px;
+  margin-right: 20px;
   float: left;
-  width: 200px;
+}
+
+.landscape {
+  width: 250px;
+}
+
+.imageContainer.landscape {
+  height: 125px;
+}
+
+.square {
+  width: 175px;
+}
+
+.imageContainer.square {
+  height: 175px;
 }
 
 .Card .image {
-  max-height: 100px;
-  max-width: 150px;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
+}
+
+.landscape .image {
+  max-width: 250px;
+  max-height: 125px;
+}
+
+.square .image {
+  max-width: 175px;
+  max-height: 175px;
 }
 
 .Card .details {
@@ -24,7 +46,6 @@
   color: #2f516d;
   font-weight: bold;
   font-size: 12px;
-  width: 180px;
   height: 18px;
   overflow: hidden;
 }
@@ -32,4 +53,6 @@
 .Card .location {
   color: #899bb2;
   font-size: 11px;
+  height: 16px;
+  overflow: hidden;
 }

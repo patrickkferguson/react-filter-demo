@@ -5,8 +5,8 @@ function Carousel(props) {
   return (
     <div className="Carousel">
       <div className="cardContainer">
-        <CardList data={props.data} />
-        </div>
+        <CardList data={props.data} imageStyle="landscape" />
+      </div>
     </div>
   );
 }
